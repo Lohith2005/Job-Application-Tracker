@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Track your job applications and interviews with this simple web app.">
+    <meta name="keywords" content="job application, job tracker, job interview">
+    <title>Job Application Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/main.min.css" rel="stylesheet">
+    <!-- Flatpickr CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Job Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                    </li>
+                    <li class="nav-item">
+                        <!-- <a class="nav-link" href="#">About</a> -->
+                    </li>
+                    <li class="nav-item">
+                        <!-- <a class="nav-link" href="#">Contact</a> -->
+                    </li>
+                </ul>
+                <!-- Search Bar -->
+                <form class="d-flex">
+                    <input type="text" id="searchInput" class="form-control me-2"
+                        placeholder="Search by title or company" oninput="toggleCancelButton()">
+                    <!-- <button class="btn btn-outline-light" type="button" onclick="filterJobs()">Search</button> -->
+
+                </form>
+                <button id="darkModeToggle" class="btn btn-secondary"><i id="themeIcon"
+                        class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-primary">Track Your Job Applications</h1>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#jobModal">
+                <i class="bi bi-plus-circle"></i> Add Job
+            </button>
+        </div>
+
+        <!-- Job Cards -->
+        <div id="job-list" class="row g-3"></div>
+
+        <!-- Status Chart -->
+        <div class="mt-5">
+            <h2>Application Status Overview</h2>
+            <canvas id="statusChart"></canvas>
+            <!-- UNDER CONSTRUCTION
+            // calender section
+            <div id="calendar-container" class="calendar-section">
+                <h3>Interview Schedule</h3>
+                <div id="calendar" class="flatpickr-calendar"></div>
+            </div> -->      
+        </div>
+    </div>
+
+    <!-- Add Job Modal -->
+    <div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content dark-mode">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="jobModalLabel">Add Job Application</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="job-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="jobTitle" class="form-label">Job Title</label>
+                                <input type="text" class="form-control" id="jobTitle" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="companyName" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" id="companyName" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="jobStatus" class="form-label">Status</label>
+                                <select class="form-select" id="jobStatus" required>
+                                    <option value="Applied">Applied</option>
+                                    <option value="Interview Scheduled">Interview Scheduled</option>
+                                    <option value="Offer">Offer</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3" id="interviewDateContainer">
+                            <label for="interviewDate" class="form-label">Interview Date & Time</label>
+                            <input type="datetime-local" class="form-control" id="interviewDate">
+                        </div>
+                        <!-- Add an "Edit Status" button -->
+                        <button type="submit" class="btn btn-primary mt-3">Save Job</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/main.min.js"></script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="Js/script.js"></script>
+
+</body>
+
+</html>
